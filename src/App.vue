@@ -1,10 +1,7 @@
-<script setup></script>
+<script setup>
+import Quiz from './components/Quiz.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    hello
-  </p>
+  <Quiz />
 </template>
-
-<style scoped></style>
