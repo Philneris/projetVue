@@ -48,6 +48,14 @@
 
         <div class="flex gap-4">
           <button
+            @click="skipQuestion"
+            :disabled="isAnswerValidated"
+            class="flex-1 bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
+          >
+            Passer
+          </button>
+
+          <button
             @click="validateAnswer"
             :disabled="!userAnswer.trim() || isAnswerValidated"
             class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
@@ -63,6 +71,7 @@
             Suivant
           </button>
         </div>
+
       </div>
 
       <div v-else class="bg-white rounded-2xl shadow-2xl p-8 text-center">
@@ -151,7 +160,7 @@ const validateAnswer = () => {
   // ✅ Conditions pour accepter la réponse :
   // - Similarité ≥ 0.75
   // - Longueur de la réponse utilisateur ≥ 60 % de la bonne réponse
-  if (similarity >= 0.9) {
+  if (similarity >= 0.5) {
     isCorrect.value = true
     feedbackMessage.value = '✅ Bonne réponse !'
     score.value++
@@ -183,6 +192,13 @@ const restartQuiz = () => {
   feedbackMessage.value = ''
   isCorrect.value = false
   quizFinished.value = false
+}
+
+const skipQuestion = () => {
+  // Ne valide pas la réponse, on saute simplement
+  isAnswerValidated.value = true
+  feedbackMessage.value = "⏭ Question passée"
+  isCorrect.value = false // la question ne compte pas dans le score
 }
 
 const getEncouragementMessage = () => {
