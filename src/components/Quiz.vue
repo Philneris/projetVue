@@ -46,11 +46,11 @@
           </p>
         </div>
 
-        <div class="flex gap-4">
+        <div class="flex flex-col sm:flex-row gap-4 w-full">
           <button
             @click="skipQuestion"
             :disabled="isAnswerValidated"
-            class="flex-1 bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
+            class="flex-1 w-full bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
           >
             Passer
           </button>
@@ -58,7 +58,7 @@
           <button
             @click="validateAnswer"
             :disabled="!userAnswer.trim() || isAnswerValidated"
-            class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
+            class="flex-1 w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
           >
             Valider
           </button>
@@ -66,7 +66,7 @@
           <button
             @click="nextQuestion"
             :disabled="!isAnswerValidated"
-            class="flex-1 bg-gray-800 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-900 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
+            class="flex-1 w-full bg-gray-800 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-900 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
           >
             Suivant
           </button>
